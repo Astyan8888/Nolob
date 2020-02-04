@@ -1,0 +1,81 @@
+{% extends 'base.html.twig' %}
+{% block title %}NoLoB Poids{% endblock %}
+{% block body %}
+      <div class="row m-0 ">
+      <div class=" container formweight col-6 col-sm-2 col-md-1">
+        {{ form_start(formPoids) }}
+        <div>
+          {{ form_row(formPoids.weight, { 'label' : 'Poids(kg)', 'attr' :{ 'placeholder': 'Exemple: 2.6' } }) }} 
+        </div>
+        <div>
+          {{ form_row(formPoids.createAtpoids, { 'label' : 'Age de l\'enfant en mois', 'attr' :{ 'placeholder': 'Exemple: 2.6' } }) }}
+        </div>
+          <button type="submit" class="btn btn-success">Valider</button>
+        {{ form_end(formPoids) }}
+      </div>
+      <div class=" container col-12  col-sm-10 mt-5 ">
+        <div id="container">
+         {% block javascripts %}
+          <script src="https://code.highcharts.com/highcharts.js"></script>
+          <script src="https://code.highcharts.com/modules/exporting.js"></script>
+          <script src="https://code.highcharts.com/modules/export-data.js"></script>
+          <script>
+
+          document.addEventListener('DOMContentLoaded', function() {
+            
+              chart.series[0].setData([{{weight}}]);
+              chart.series[1].setData([{{gendermin}}]);
+              chart.series[2].setData([{{gendermax}}]);
+          
+            });
+
+          var chart = Highcharts.chart('container', {
+              chart: {
+                type: 'line'
+              },
+              title: {
+                text: 'Poids '
+              },
+              subtitle: {
+                text: ''
+              },
+              xAxis: {
+                categories: ['0','1','2','3','4','5','6','7','8','9','10','11','12','18','24']
+              },
+              yAxis: {
+                title: {
+                  text: 'Poids (Kg)'
+                }
+              },
+              plotOptions: {
+                line: {
+                  dataLabels: {
+                    enabled: true
+                  },
+                  enableMouseTracking: true
+                }
+              },
+              series: [{
+                  name: 'Poids',
+                  data:[]
+                  },
+                {
+                  name: 'PoidsNormebasse',
+                  data: []
+                  },
+                  
+                {
+                  name: 'PoidsNormeHaute',
+                  data: []
+                }]
+            });
+
+             
+          </script>
+  
+        {% endblock %}
+        </div>
+  </div>
+  </div>
+{% endblock %}
+

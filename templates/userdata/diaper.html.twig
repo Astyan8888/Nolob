@@ -1,0 +1,100 @@
+{% extends 'base.html.twig' %}
+{% block title %}NoLoB Couches{% endblock %}
+{% block body %}
+
+<div class="row m-0 ">
+      <div class=" container formsize col-6 col-sm-2 col-md-2">
+        {{ form_start(formDiaper) }}
+            <div>
+                {{ form_row(formDiaper.datediaper, { 'label' : 'Date' }) }}
+               
+            </div>
+            <button type="submit" class="btn btn-success">Ajoutez une couche</button>
+        {{ form_end(formDiaper) }}
+     </div>
+
+    <div class=" container col-12  col-sm-10 ">
+        <div id="container">
+
+            {% block javascripts %}
+            <script src="https://code.highcharts.com/highcharts.js"></script>
+            <script src="https://code.highcharts.com/modules/exporting.js"></script>
+            <script src="https://code.highcharts.com/modules/export-data.js"></script>
+
+            <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                var datadiaper = "{{datediaper}}";
+                var date_diaper = keeper(datadiaper, "_" , " ");
+                date_diaper = date_diaper.split(" ");
+
+            chart.series[0].setData([{{diaperamount}}]);
+            chart.xAxis[0].setCategories(date_diaper);
+
+             });
+
+              var chart = Highcharts.chart('container', {
+                    chart: {
+                        type: 'column'
+                    },
+                    title: {
+                        text: 'Quantité de couche'
+                    },
+                    subtitle: {
+                        text: 'Quantité par jour '
+                    },
+                    xAxis: {
+                        categories: [
+                        
+                           
+                        ],
+                        crosshair: true
+                    },
+                    yAxis: {
+                        min: 0,
+                        title: {
+                            text: 'Couche '
+                        }
+                    },
+                    tooltip: {
+                        headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                        pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                            '<td style="padding:0"><b>{point.y:.1f} couches</b></td></tr>',
+                        footerFormat: '</table>',
+                        shared: true,
+                        useHTML: true
+                    },
+                    plotOptions: {
+                        column: {
+                            pointPadding: 0.2,
+                            borderWidth: 0
+                        }
+                    },
+                    series: [{
+                        name: 'Couches',
+                        data: [ ]
+                    }]
+                });
+
+                function keeper(text,regex,replace){
+   
+     while (text.indexOf(regex) != -1) {
+         
+        text = text.replace(regex, replace);
+  
+     }
+      
+     return text;
+
+}
+            </script>
+            {{ parent() }}
+            {% endblock %}
+        </div>
+    </div>
+  </div>
+{% endblock %}
+
+
+
+
+    

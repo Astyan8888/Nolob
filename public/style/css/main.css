@@ -1,0 +1,55 @@
+.registration {
+  background: url(../../pict/acc.jpg) center center no-repeat;
+  height: 90vh;
+  background-size: cover;
+  color: white; }
+
+.form-registration {
+  border-radius: 20px; }
+
+.about {
+  margin-top: 10%;
+  border-radius: 20px;
+  font-size: 1.2rem; }
+
+.mainhome {
+  width: 100%;
+  height: 100%; }
+
+.footer {
+  color: white; }
+  .footer a {
+    color: white; }
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; }
+  body main {
+    flex: 1; }
+
+#container {
+  min-width: 310px;
+  height: 400px;
+  margin: 0;
+  height: 80vh; }
+
+.custom-file {
+  width: 30%;
+  height: 25px; }
+
+.custom-file-input {
+  opacity: 1; }
+
+.vertical-center {
+  min-height: 100%;
+  /* Fallback for browsers do NOT support vh unit */
+  min-height: 80vh;
+  display: flex;
+  align-items: center; }
+
+.form-registration, .about {
+  color: white;
+  background-color: rgba(120, 194, 173, 0.3); }
+
+/*# sourceMappingURL=main.css.map */

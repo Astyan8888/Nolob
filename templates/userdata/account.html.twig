@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+{% block title %}NoLoB Compte{% endblock %}
+{% block body %}
+<div class="row h-100 m-0">
+    <div class="account container my-auto">
+        <div class="col-12 col-md-8 col-lg-6 mx-auto p-sm-5">
+            <h2 class="text-center mb-5">Compte:</h2>
+            <div class="col-12 col-md-8 mx-auto">
+            <p>Pseudo: {{ user.username }}</p>
+            <p>Adresse E-mail : {{ user.email }}</p>
+            <p>Sexe de votre enfant :
+                {% if user.gender == 0 %}
+                Fille
+                {% else %}
+                Garçon
+                {% endif %}
+            </p>
+            <p>Date de naissance : {{ user.birthdate |date("d/m/Y") }}</p>
+            </div>
+            <p class="text-center mt-5">
+            
+            <a href="{{ path('deleteUser')}}"><button title="Action définitive" type="button" class="btn btn-success">Supprimer mon compte</button></a>
+            </p>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

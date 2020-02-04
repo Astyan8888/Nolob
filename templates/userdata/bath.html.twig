@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+{% block title %}NoLoB Bain{% endblock %}
+{% block body %}
+<div class="container ">
+ <div class="row mt-5">
+        <div class=" col-10 col-lg-4 m-auto">
+        {{ form_start(formBath) }}
+        <div>
+            {{ form_row(formBath.datebath, { 'label' : 'Date du bain','attr' :{ 'placeholder': 'Exemple: 225' } }) }} 
+        </div>
+        <button type="submit" class="btn btn-success">Enregistrer</button>
+        {{ form_end(formBath) }}
+        </div>
+        
+        <div class=" col-10 col-lg-6 m-auto ">
+        <h2>Dernier bain pris le : 
+              {% if not bath  %}
+              ----
+              {% else %}
+                {{ bath.datebath |date("d/m/Y") }} 
+             {% endif %}
+             </h2>
+    </div>
+   </div> 
+</div>
+
+{% endblock %}

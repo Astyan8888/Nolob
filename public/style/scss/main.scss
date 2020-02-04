@@ -1,0 +1,28 @@
+@import 'navbar';
+@import 'home';
+@import 'body';
+@import 'footer';
+@import 'mains';
+@import 'graph';
+@import 'event';
+@import 'account';
+
+%color {
+ 
+color:white;
+background-color: rgba(120, 194, 173, 0.3);
+
+}
+
+$screen-sm-min : 576 px;
+
+// Petites tablettes (vue portrait)
+$screen-md-min : 768 px;
+
+// Tablettes et petits ordinateurs de bureau
+$screen-lg-min : 992 px;
+
+// Grandes tablettes et ordinateurs de bureau
+$screen-xl-min : 1200 px;
+
+

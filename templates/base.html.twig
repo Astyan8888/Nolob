@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8">
+    <title>
+      {% block title %}Acceuil{% endblock %}
+    </title>
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href='style\css\reset.css'>
+    <link rel="stylesheet" href='https://bootswatch.com/4/minty/bootstrap.min.css'>
+    <link rel="stylesheet" href='style\css\main.css'>
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    <link rel="icon" type="image/png" href="{{ asset('favicon.png') }}" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+    
+    {% block stylesheets %}{% endblock %}
+  </head>
+  <body >
+
+    <header>
+     {% block navbar %}
+      <nav class="navbar navbar-expand-lg navbar-dark bg-primary ">
+        <a class="navbar-brand "  href=
+        {% if not app.user %}
+        "{{path('security_registration')}}"
+        {% else %}
+        "{{path('homedata')}}"
+        {% endif %}>NoLoB</a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class=" navbar-collapse collapse " id="navbarColor01"   >
+          <ul class="navbar-nav mr-auto" >
+            {# Selects the items to be displayed in the navbar according to whether the user is logged in or not #}
+            {% if not app.user %}
+              <li class="nav-item ">
+                <form  action="{{ path('security_login') }}" method="post" class="d-flex justify-content-end" >
+                  <input type="text" name="_username" value="" required placeholder="Adresse email" class="form-control">
+                  <input type="password" name="_password" value="" required placeholder="Mot de passe" class="form-control">
+                  <button type="submit" name="button" class="btn btn-light" id="btnlogin">Connexion</button>
+                </form>
+              </li>
+            {% else %}
+              <li class="nav-item">
+                <a  class="nav-link" href="{{ path('feeding')}}">Allaitement<span class="sr-only">(current)</span></a>
+              </li>
+              <li class="nav-item ">
+                <a  class="nav-link" href="{{ path('poids')}}">Poids</a>
+              </li>
+              <li class="nav-item ">
+                <a class="nav-link " href="{{ path('size')}}">Taille</a>
+              </li>
+              <li class="nav-item ">
+                <a class="nav-link" href="{{ path('pc')}}">Périmetre cranien</a>
+              </li>
+              <li class="nav-item ">
+                <a class="nav-link" href="{{ path('diaper')}}">Couches</a>
+              </li>
+              <li class="nav-item ">
+                <a  class="nav-link" href="{{ path('sleep')}}">Sommeil</a>
+              </li>
+              <li class="nav-item ">
+                <a class="nav-link" href="{{ path('bath')}}">Bain</a>
+              </li>
+              <li class="nav-item ">
+                <a class="nav-link" href="{{ path('event')}}">Evénement</a>
+              </li>
+              <li class="nav-item  ">
+                <a class="nav-link" href="{{ path('userdata')}}">Compte</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{{ path('security_logout')}}">Deconnexion</a>
+              </li>
+            {% endif %}
+          </ul>
+
+        </div>
+      </nav>
+      {% endblock %}
+    </header>
+    
+        <main >
+         {% block body %}  {% endblock %}
+        </main>
+     
+     <footer>
+     {% block footer %}
+    <div class=" navbar-expand-lg navbar-dark bg-primary footer">
+          
+          <div class=" navbar d-flex flex-row justify-content-center footer ">
+              <a class="mx-1" href="{{ path('CG')}}">Conditions générales</a>
+              <a class="mx-1" href="{{ path('contacte')}}">contact</a>
+              <a class="mx-1" href="">NoLoB &copy; 2018</a>
+          </div>
+          
+    </div>
+    {% endblock %}
+    </footer>
+    {% block javascripts %}{% endblock %}
+    
+    
+     
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+      
+      
+    </body>
+
+  </html>

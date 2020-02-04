@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+{% block title %}NoLoB Evénement{% endblock %}
+{% block body %}
+    <div >
+        <div class=" container formsize col-6 col-sm-2 col-md-10">
+            {{ form_start(formEvent) }}
+                <div>
+                {{ form_row(formEvent.datevent, { 'label' : 'Date de l\'événement' }) }}
+                
+                </div>
+                <div>
+                {{ form_row(formEvent.textevent, { 'label' : 'Texte à enregistrer', 'attr' :{ 'placeholder': 'Aujourd\'hui premier pas  ....' } }) }}
+                
+                </div>
+                <div>
+                {{ form_row(formEvent.pict, { 'label' : 'Photos (Format Jpeg,PNG)', 'attr' :{ 'placeholder': 'photos.png' } }) }}
+                
+                </div>
+                
+                <button type="submit" class="btn btn-success">Valider</button>
+            {{ form_end(formEvent) }}
+        </div>
+        <div class="row m-0 col-6 col-sm-2 col-md-10">
+            <div class=" container col-12  col-sm-3 ">
+                 {% for e in event %}
+                     <div class="">
+                        {{ e.textevent }}{{ e.datevent | date("d/m/Y H:i:s")}}
+                        
+                        
+                     </div>
+                 {% endfor %}
+            </div>
+           <div class=" container col-12  col-sm-6 ">
+                 {% for e in event %}
+                     <div class="">
+                        <div class="event img-fluid" >
+                            <img class="img-fluid event " src="{{app.request.basepath}}/uploads/pict/{{ e.pict }}  " alt="">
+                        </div> {{ e.datevent | date("d/m/Y H:i:s")}}
+                       
+                     </div>
+                 {% endfor %}
+            </div>
+            
+               
+        </div>
+    </div>
+{% endblock %}

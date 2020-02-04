@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+{% block title %}NoLoB Acceuil privé{% endblock %}
+{% block body %}
+
+<div class="d-flex flex-column bd-highlight mb-3 mx-auto mt-5">
+    <div class="d-flex flex-row flex-wrap  bd-highlight mb-3 mx-auto">
+     <div class="p-2"><a  href="{{path('feeding')}}"><h3>Allaitement</h3><img class="px-2 mx-auto" src="{{ asset('pict/feeding.png') }}" alt="Example"/></a></div>
+     <div class="p-2"><a  href="{{path('poids')}}"><h3>Poids</h3><img class="px-2 mx-auto"src="{{ asset('pict/weight.png') }}" alt="Example"/></a></div>
+     <div class="p-2"><a  href="{{path('size')}}"><h3>Taille</h3><img class="px-2 mx-auto" src="{{ asset('pict/sizeb.png') }}" alt="Example"/></a></div>
+     <div class="p-2"><a  href="{{path('pc')}}"><h5>Perimetre <br>Cranien</h5><img class="px-2 mx-auto" src="{{ asset('pict/pcb.png') }}" alt="Example"/></div>
+    </div>
+    <div class="d-flex flex-row  flex-wrap bd-highlight mb-3 mx-auto">
+     <div class="p-2"><a  href="{{path('diaper')}}"><h3>Couches</h3><img class="px-2 mx-auto" src="{{ asset('pict/diaper.png') }}" alt="Example"/></a></div>
+     <div class="p-2"><a  href="{{path('sleep')}}"><h3>Sommeil</h3><img class="px-2 mx-auto" src="{{ asset('pict/sleep.png') }}" alt="Example"/></a></div>
+     <div class="p-2"><a  href="{{path('event')}}"><h3>Evénement</h3><img class="px-2 mx-auto" src="{{ asset('pict/event.png') }}" alt="Example"/></a></div>
+     <div class="p-2"><a  href="{{path('userdata')}}"><h3>Compte</h3><img class="px-2 mx-auto" src="{{ asset('pict/account.png') }}" alt="Example"/></a></div>
+    </div>
+
+</div>
+
+{% endblock %}  

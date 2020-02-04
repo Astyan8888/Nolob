@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+ {% block title %}NoLoB Allaitement{% endblock %}
+    {% block body %}
+    
+        <div class="container" >
+            <div class="row ">
+                <div class="col-10 col-lg-4 m-auto">    
+                    <div class=" ">
+                    {{ form_start(formFeeding) }}
+                        <div>
+                            {{ form_row(formFeeding.datefeeding, { 'label' : 'Date' }) }}   
+                        </div>
+                        <div class="">
+                            <div>
+                                <div>
+                                    {{ form_row(formFeeding.duration, { 'label' : 'Durée de l\'allaitement' }) }}   
+                                </div>
+                                <div>
+                                    {{ form_row(formFeeding.breast, { 'label' : 'Seins utilisé (droit ou gauche)' }) }}
+                                </div>
+                            </div>
+                            <div>
+                                    {{ form_row(formFeeding.amount, { 'label' : 'biberons(Quantité en mL', 'attr' :{ 'placeholder': 'Exemple: 225' } }) }} 
+                            </div> 
+                        </div>
+                        <button type="submit" class="btn btn-success">Ajouter</button>
+                    {{ form_end(formFeeding) }}
+                    </div>
+                </div>
+                <div class="col-10 col-lg-6 m-auto ">
+
+                    {% if feeding %}
+                        <h3>Dernier sein :
+                        {% if feeding.breast == 1 %}
+                            Droit
+                        {% elseif feeding.breast == 2 %}
+                            Gauche 
+                        {% else %}
+                            Aucun
+                        {% endif %}
+                        </h3>
+                        <h3>Quantité total : {{feeding.amount}} mL</h3>
+                        <h3>Durée total : {{feeding.duration |date('H')}} H {{feeding.duration |date('i')}} min </h3>
+                    {% else %}   
+                        <h3>Dernier sein : Aucun </h3>
+                        <h3>Quantité total :00  mL</h3>
+                        <h3>Durée total : 00 H 00 min </h3>
+                    {% endif %}
+                    
+
+                    
+                </div>
+             </div>   
+        </div>
+        
+    {% endblock %}

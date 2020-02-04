@@ -1,0 +1,99 @@
+{% extends 'base.html.twig' %}
+{% block title %}NoLoB Périmètre Crânien{% endblock %}
+{% block body %}
+<div class="row m-0 ">
+      <div class=" container formsize col-6 col-sm-2 col-md-2">
+{{ form_start(formPC) }}
+          <div>
+              {{ form_row(formPC.PC, { 'label' : 'Périmètre crânien (cm)', 'attr' :{ 'placeholder': 'Exemple: 28' } }) }} 
+            </div>
+            <div>
+                {{ form_row(formPC.datepc, { 'label' : 'Age de l\'enfant en mois', 'attr' :{ 'placeholder': 'Exemple: 2.6' } }) }}
+            </div>
+<button type="submit" class="btn btn-success">Valider</button>
+{{ form_end(formPC) }}
+</div>
+<div class=" container col-12  col-sm-10 ">
+<div id="container" ></div>
+
+{% block javascripts %}
+  <script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/modules/export-data.js"></script>
+
+<script>
+
+   document.addEventListener('DOMContentLoaded', function() {
+     var datapc = "{{datepc}}";
+     var dw = keeper(datapc, "_" , " ");
+     dw = dw.split(" ");
+    
+     
+    chart.series[0].setData([{{pc}}]);
+    chart.xAxis[0].setCategories(dw);
+    
+    
+    });
+
+   var chart = Highcharts.chart('container', {
+      chart: {
+        type: 'line'
+      },
+      title: {
+        text: 'Périmetre cranien sur un an'
+      },
+      subtitle: {
+        text: ''
+      },
+      xAxis: {
+        categories: []
+      },
+      yAxis: {
+        title: {
+          text: 'PC (cm)'
+        }
+      },
+      plotOptions: {
+        line: {
+          dataLabels: {
+            enabled: true
+          },
+          enableMouseTracking: true
+        }
+      },
+      series: [{
+          name: 'Poids',
+          data:[]
+          },
+        {
+          name: 'PoidsNormebasse',
+          data: []
+          },
+          
+        {
+          name: 'PoidsNormeHaute',
+          data: []
+      }]
+});
+
+function keeper(text,regex,replace){
+   
+     while (text.indexOf(regex) != -1) {
+         
+        text = text.replace(regex, replace);
+  
+     }
+      
+     return text;
+
+}
+</script>
+
+
+
+  
+{% endblock %}
+</div>
+  </div>
+  </div>
+{% endblock %}

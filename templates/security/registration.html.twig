@@ -1,0 +1,62 @@
+{% extends 'base.html.twig' %}
+
+{% block registration %}
+    
+    <div class="d-flex justify-content-end registration ">
+        {# presentation block  #}
+        <div class="about">
+        <p>Le projet NoLoB consiste en un site web servant à effectuer un suivie des données sur un nouveau-né.
+            NoLoB étant un acronyme de Notebook of life of baby, en français « carnet de vie de bébé ».
+            Le tableau de suivi du bébé sert principalement à connaître les journées types du bébé.
+            Chaque bébé à son propre rythme de vie, il a un rythme bien à lui, qui évolue doucement avec son âge.
+            Et remplir un tableau de suivi aide à déterminer ce qu'il y a de mieux pour l'enfant.
+            On peut ainsi suivre plusieurs données tel le nombre de tétées dans la journée, ou l'heure à laquelle les biberons sont donnés, ainsi que leur quantité. On peut suivre également l'évolution du poids, de la taille, du périmètre crânien etc…
+            Ce projet permet donc aux parents le désirant d'enregistrer en ligne les données souhaitées sur leur enfant.
+            Le site web servira à traiter ses données enregistrées à l'aide de formulaires en ligne.
+            Avec ces données renseigné le site pourra les traiter et les rendre sous forme de graphique, de courbe, de tableau etc.
+            Ses données traitées pourront être exportées et ainsi transmises au pédiatre par exemple.
+            Ses résultats leur permettront de savoir tout ce qu'il y a besoin de savoir sur leur enfant.
+            Et leur permettre ainsi de s'adapter au rythme du bébé.
+        </p>
+        </div>
+        {# registration form #}
+        <div class="form-registration mt-2 mr-5">
+            {# twig code to display the form #}
+            {{ form_start(formUsers) }}
+            {# block email #}
+            <div>
+                <label for"">Adresse E-Mail</label>
+                {{ form_widget(formUsers.email) }}
+            </div>
+            {# block username #}
+            <div>
+                <label for"">Pseudo</label>
+                {{ form_widget(formUsers.username) }}
+            </div>
+            {# block password #}
+            <div>
+                <label for"">Mot de passe</label>
+                {{ form_widget(formUsers.password) }}
+            </div>
+            {# block password confirm #}
+            <div>
+                <label for"">Confimez le mot de passe</label>
+                {{ form_widget(formUsers.confirm_password) }}
+            </div>
+            {# block baby birthdate #}
+            <div>
+                <label for"">Date de naissance de votre enfant</label>
+                {{ form_widget(formUsers.birthdate) }}
+            </div>
+            {# block gender #}
+            <div>
+                <label for"">Sexe de votre enfant</label>
+                {{ form_widget(formUsers.Gender) }}
+            </div>
+            {# block submit form #}
+            <button type="submit" class="btn btn-success" id="btn-registration">Inscription</button>
+            {{ form_end(formUsers) }}
+            
+        </div>
+    </div>
+{% endblock %}

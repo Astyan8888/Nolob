@@ -1,0 +1,69 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    
+       
+     {% block registration %}
+                    <div class=" mainhome  ">
+                        <div class="registration mx-auto row">
+                            <div class=" col-lg-8  d-none d-lg-block ">
+                                <div class="about p-3">
+                                <p>Le projet NoLoB consiste en un site web servant à effectuer un suivie des données sur un nouveau-né.
+                                    NoLoB étant un acronyme de Notebook of life of baby, en français « carnet de vie de bébé ».
+                                    Le tableau de suivi du bébé sert principalement à connaître les journées types du bébé.
+                                    Chaque bébé à son propre rythme de vie, il a un rythme bien à lui, qui évolue doucement avec son âge.
+                                    Et remplir un tableau de suivi aide à déterminer ce qu'il y a de mieux pour l'enfant.
+                                </p>    
+                                <p>
+                                    On peut ainsi suivre plusieurs données tel le nombre de tétées dans la journée, ou l'heure à laquelle les biberons sont donnés, ainsi que leur quantité. On peut suivre également l'évolution du poids, de la taille, du périmètre crânien etc…
+                                    Ce projet permet donc aux parents le désirant d'enregistrer en ligne les données souhaitées sur leur enfant.
+                                    Le site web servira à traiter ses données enregistrées à l'aide de formulaires en ligne.
+                                    Avec ces données renseigné le site pourra les traiters et les rendres sous forme de graphique, de courbe, de tableau etc.
+                                    Ses données  pourront être exportées et ainsi transmises au pédiatre par exemple.
+                                    Ses résultats  permettront aux parents de savoir tout ce qu'il y a besoin de savoir sur leur enfant.
+                                    Et leur permettre ainsi de s'adapter au rythme de leur bébé.
+                                </p>
+                                </div>
+                            </div>
+                            <div class=" col-lg-4">
+                                <div class="form-registration mx-auto mt-3 p-4 col-10">
+                                    {{ form_start(formUsers) }}
+                                    <div>
+                                    {{ form_row(formUsers.email, { 'label' : 'E-mail', 'attr' :{ 'placeholder': 'adresse E-mail' } }) }}             
+                                    </div>
+                                    <div>
+                                     {{ form_row(formUsers.username, { 'label' : 'Pseudonyme', 'attr' :{ 'placeholder': 'Pseudonyme' } }) }}
+                                    </div>
+                                    <div>
+                                    {{ form_row(formUsers.password, { 'label' : 'Mote de passe', 'attr' :{ 'placeholder': 'Mot de passe' } }) }}
+                                    </div>
+                                    <div>
+                                   {{ form_row(formUsers.confirm_password, { 'label' : 'Confirmation du mot de passe', 'attr' :{ 'placeholder': 'Confirmer mot de passe' } }) }}
+                                    </div>
+                                    <div>
+                                    {{ form_row(formUsers.birthdate, { 'label' : 'Date de naissance de votre enfant', 'attr' :{ 'placeholder': 'Date anniversaire' } }) }}
+                                    </div>
+                                    <div>
+                                    {{ form_row(formUsers.Gender, { 'label' : 'Sexe de votre enfant', 'attr' :{ 'placeholder': 'Genre' } }) }}
+                                    </div>
+                                     {# <div class="g-recaptcha captcha d-none d-lg-none d- d-xl-block" data-sitekey="6LfXsIEUAAAAAPefQtn4B-g6l3A5qkZGt41FlBoI"></div> #}
+                                    <div>
+                                      <button type="submit" class="btn btn-success" id="btn-registration">Inscription</button>
+                                    </div> 
+                                     
+                                    {{ form_end(formUsers) }}
+                        
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                     {% block javascripts %}
+                            <script>
+                           
+                            </script>
+
+ {% endblock %}
+                {% endblock %}
+    
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<h1>edit data</h1>
+{
+{{ form_start(formUsers) }}
+
+ {{user.email}}
+ {{ form_widget(formUsers.email, { 'value': '{{user.email}}' }) }}
+{{ form_row(formUsers.username) }}
+<button type="submit" class="btn btn-success">Editer</button>
+{{ form_end(formUsers) }}
+
+{% endblock %}

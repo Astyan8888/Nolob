@@ -1,0 +1,57 @@
+security:
+    encoders:
+      App\Entity\Users:
+         algorithm:       bcrypt
+
+    # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
+
+    providers:
+        in_memory: { memory: ~ }
+        in_database:
+          entity:
+            class:        App\Entity\Users
+            property:     email
+
+    firewalls:
+        dev:
+            pattern:      ^/(_(profiler|wdt)|css|images|js)/
+            security:     false
+        main:
+            anonymous:    true
+
+            provider:     in_database
+
+            form_login:
+              login_path: security_login
+              check_path: security_login
+              default_target_path: homedata
+              
+              
+
+            logout:
+              path:       security_logout
+              target:     security_registration
+
+     
+            
+
+            # activate different ways to authenticate
+
+            # http_basic: true
+            # https://symfony.com/doc/current/security.html#a-configuring-how-your-users-will-authenticate
+
+            # form_login: true
+            # https://symfony.com/doc/current/security/form_login_setup.html
+
+    # Easy way to control access for large sections of your site
+    # Note:               Only the *first* access control that matches will be used
+    access_control:
+         - { path: ^/diaper, roles: ROLE_USER }
+         - { path: ^/sleep, roles: ROLE_USER }
+         - { path: ^/size, roles: ROLE_USER }
+         - { path: ^/userdata, roles: ROLE_USER }
+         - { path: ^/feeding, roles: ROLE_USER }
+         - { path: ^/poids, roles: ROLE_USER }
+         - { path: ^/pc, roles: ROLE_USER }
+         - { path: ^/bath, roles: ROLE_USER }
+         - { path: ^/event, roles: ROLE_USER }
